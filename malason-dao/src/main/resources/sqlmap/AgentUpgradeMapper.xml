@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sf.su.malason.dao.mapper.AgentUpgradeMapper" >
+  <resultMap id="BaseResultMap" type="com.sf.su.malason.dao.domain.AgentUpgrade" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="agent_version" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="down_load_url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="upgrade_job_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="upgrade_job_interval" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="script" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="log_type" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="gather_class_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="is_deleted" jdbcType="BIT" javaType="java.lang.Boolean" />
+      <arg column="created_tm" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="modified_tm" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, agent_version, down_load_url, upgrade_job_name, upgrade_job_interval, script, 
+    log_type, gather_class_name, is_deleted, created_tm, modified_tm
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from smp_agent_upgrade
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from smp_agent_upgrade
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sf.su.malason.dao.domain.AgentUpgrade" >
+    insert into smp_agent_upgrade (id, agent_version, down_load_url, 
+      upgrade_job_name, upgrade_job_interval, script, 
+      log_type, gather_class_name, is_deleted, 
+      created_tm, modified_tm)
+    values (#{id,jdbcType=INTEGER}, #{agentVersion,jdbcType=VARCHAR}, #{downLoadUrl,jdbcType=VARCHAR}, 
+      #{upgradeJobName,jdbcType=VARCHAR}, #{upgradeJobInterval,jdbcType=VARCHAR}, #{script,jdbcType=VARCHAR}, 
+      #{logType,jdbcType=VARCHAR}, #{gatherClassName,jdbcType=VARCHAR}, #{isDeleted,jdbcType=BIT}, 
+      #{createdTm,jdbcType=TIMESTAMP}, #{modifiedTm,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sf.su.malason.dao.domain.AgentUpgrade" >
+    insert into smp_agent_upgrade
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="agentVersion != null" >
+        agent_version,
+      </if>
+      <if test="downLoadUrl != null" >
+        down_load_url,
+      </if>
+      <if test="upgradeJobName != null" >
+        upgrade_job_name,
+      </if>
+      <if test="upgradeJobInterval != null" >
+        upgrade_job_interval,
+      </if>
+      <if test="script != null" >
+        script,
+      </if>
+      <if test="logType != null" >
+        log_type,
+      </if>
+      <if test="gatherClassName != null" >
+        gather_class_name,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="createdTm != null" >
+        created_tm,
+      </if>
+      <if test="modifiedTm != null" >
+        modified_tm,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="agentVersion != null" >
+        #{agentVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="downLoadUrl != null" >
+        #{downLoadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="upgradeJobName != null" >
+        #{upgradeJobName,jdbcType=VARCHAR},
+      </if>
+      <if test="upgradeJobInterval != null" >
+        #{upgradeJobInterval,jdbcType=VARCHAR},
+      </if>
+      <if test="script != null" >
+        #{script,jdbcType=VARCHAR},
+      </if>
+      <if test="logType != null" >
+        #{logType,jdbcType=VARCHAR},
+      </if>
+      <if test="gatherClassName != null" >
+        #{gatherClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="createdTm != null" >
+        #{createdTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedTm != null" >
+        #{modifiedTm,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sf.su.malason.dao.domain.AgentUpgrade" >
+    update smp_agent_upgrade
+    <set >
+      <if test="agentVersion != null" >
+        agent_version = #{agentVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="downLoadUrl != null" >
+        down_load_url = #{downLoadUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="upgradeJobName != null" >
+        upgrade_job_name = #{upgradeJobName,jdbcType=VARCHAR},
+      </if>
+      <if test="upgradeJobInterval != null" >
+        upgrade_job_interval = #{upgradeJobInterval,jdbcType=VARCHAR},
+      </if>
+      <if test="script != null" >
+        script = #{script,jdbcType=VARCHAR},
+      </if>
+      <if test="logType != null" >
+        log_type = #{logType,jdbcType=VARCHAR},
+      </if>
+      <if test="gatherClassName != null" >
+        gather_class_name = #{gatherClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="createdTm != null" >
+        created_tm = #{createdTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedTm != null" >
+        modified_tm = #{modifiedTm,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sf.su.malason.dao.domain.AgentUpgrade" >
+    update smp_agent_upgrade
+    set agent_version = #{agentVersion,jdbcType=VARCHAR},
+      down_load_url = #{downLoadUrl,jdbcType=VARCHAR},
+      upgrade_job_name = #{upgradeJobName,jdbcType=VARCHAR},
+      upgrade_job_interval = #{upgradeJobInterval,jdbcType=VARCHAR},
+      script = #{script,jdbcType=VARCHAR},
+      log_type = #{logType,jdbcType=VARCHAR},
+      gather_class_name = #{gatherClassName,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=BIT},
+      created_tm = #{createdTm,jdbcType=TIMESTAMP},
+      modified_tm = #{modifiedTm,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
