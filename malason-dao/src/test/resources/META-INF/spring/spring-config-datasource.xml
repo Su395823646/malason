@@ -42,7 +42,7 @@
 	
 	<!-- ScanMapperFiles -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.sf.su.malason.mapper" />
+        <property name="basePackage" value="com.sf.su.malason.dao.mapper" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
@@ -67,7 +67,7 @@
 	</tx:advice>
 	
 	<aop:config>
-		<aop:pointcut id="transactionPointcut" expression="execution(* com.sf.su.malason.mapper.*.*(..))" />
+		<aop:pointcut id="transactionPointcut" expression="execution(* com.sf.su.malason.dao.mapper.*.*(..))" />
 		<aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionService" />
 	</aop:config>
 
